@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitClient {
 
     private static RetrofitClient instance = null;
-    private String serverIp = "http://192.168.1.70:8080";
+    private static String serverIp = "http://192.168.1.70:8080";
 
     private StreamerApi service;
 
@@ -59,8 +59,8 @@ public class RetrofitClient {
         return serverIp + "/songs/"+songId+"/song";
     }
 
-    public Boolean updateServerIp(String serverIp){
-        this.serverIp = serverIp;
+    public Boolean updateServerIp(String newServerIp){
+        serverIp = newServerIp;
         try {
             instance = new RetrofitClient(serverIp);
             return true;
